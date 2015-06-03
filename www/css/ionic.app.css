@@ -27,6 +27,18 @@ ion-content .scroll {
   height: 55px;
   background: black; }
 
+.sample-show-hide {
+  padding: 10px;
+  border: 1px solid black;
+  background: white; }
+
+.sample-show-hide {
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s; }
+
+.sample-show-hide.ng-hide {
+  opacity: 0; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

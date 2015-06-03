@@ -35,20 +35,20 @@ angular.module('cardKing', ['ionic'])
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   // Make consistent style/behaviour, defaults mostly to more strict ios styles.
   // $ionicConfigProvider.views.transition('ios');
-  $ionicConfigProvider.views.maxCache(999);
-  $ionicConfigProvider.views.forwardCache(true);
-  $ionicConfigProvider.scrolling.jsScrolling(true);
-  $ionicConfigProvider.backButton.icon('ion-ios-arrow-back');
-  $ionicConfigProvider.backButton.text('');
-  $ionicConfigProvider.backButton.previousTitleText(false);
-  $ionicConfigProvider.form.checkbox('circle');
-  $ionicConfigProvider.form.toggle('large');
-  $ionicConfigProvider.tabs.style('standard');
-  $ionicConfigProvider.tabs.position('bottom');
-  $ionicConfigProvider.templates.maxPrefetch(999);
-  $ionicConfigProvider.navBar.alignTitle('center');
-  $ionicConfigProvider.navBar.positionPrimaryButtons('left');
-  $ionicConfigProvider.navBar.positionSecondaryButtons('right');
+  // $ionicConfigProvider.views.maxCache(999);
+  // $ionicConfigProvider.views.forwardCache(true);
+  // $ionicConfigProvider.scrolling.jsScrolling(true);
+  // $ionicConfigProvider.backButton.icon('ion-ios-arrow-back');
+  // $ionicConfigProvider.backButton.text('');
+  // $ionicConfigProvider.backButton.previousTitleText(false);
+  // $ionicConfigProvider.form.checkbox('circle');
+  // $ionicConfigProvider.form.toggle('large');
+  // $ionicConfigProvider.tabs.style('standard');
+  // $ionicConfigProvider.tabs.position('bottom');
+  // $ionicConfigProvider.templates.maxPrefetch(999);
+  // $ionicConfigProvider.navBar.alignTitle('center');
+  // $ionicConfigProvider.navBar.positionPrimaryButtons('left');
+  // $ionicConfigProvider.navBar.positionSecondaryButtons('right');
 
   $stateProvider
   .state('header', {
