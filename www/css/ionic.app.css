@@ -15,6 +15,18 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+.test {
+  margin-top: 5px;
+  height: 66px;
+  background: pink; }
+
+ion-content .scroll {
+  height: 100%; }
+
+.main-options {
+  height: 55px;
+  background: black; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

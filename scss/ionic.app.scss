@@ -14,6 +14,23 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+.test {
+  margin-top: 5px;
+  height: 66px;
+  background: pink;
+}
+
+ion-content {
+  .scroll {
+    height: 100%
+  }
+}
+
+.main-options {
+  height: 55px;
+  background: black;
+}
+
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;

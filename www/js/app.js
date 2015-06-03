@@ -5,39 +5,116 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('cardKing', ['ionic'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, Data, Utility, $rootScope) {
+  var $ = Utility;
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      // Enable most css features.
+      $ionicPlatform.setGrade('a');
+      // get device info.
+      Data.system.device = $ionicPlatform.device();
+      $ionicPlatform.showStatusBar(true);
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
   });
+  $rootScope.goTo = $.goTo;
+  $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams){
+    $rootScope.currentParam = toParams
+    console.log($rootScope.currentParam);
+  })
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  // Make consistent style/behaviour, defaults mostly to more strict ios styles.
+  // $ionicConfigProvider.views.transition('ios');
+  $ionicConfigProvider.views.maxCache(999);
+  $ionicConfigProvider.views.forwardCache(true);
+  $ionicConfigProvider.scrolling.jsScrolling(true);
+  $ionicConfigProvider.backButton.icon('ion-ios-arrow-back');
+  $ionicConfigProvider.backButton.text('');
+  $ionicConfigProvider.backButton.previousTitleText(false);
+  $ionicConfigProvider.form.checkbox('circle');
+  $ionicConfigProvider.form.toggle('large');
+  $ionicConfigProvider.tabs.style('standard');
+  $ionicConfigProvider.tabs.position('bottom');
+  $ionicConfigProvider.templates.maxPrefetch(999);
+  $ionicConfigProvider.navBar.alignTitle('center');
+  $ionicConfigProvider.navBar.positionPrimaryButtons('left');
+  $ionicConfigProvider.navBar.positionSecondaryButtons('right');
+
   $stateProvider
   .state('header', {
     url: '/header',
     abstract: true,
-    templateUrl: 'header.html'
+    templateUrl: 'templates/header.html'
   })
+    ////////// HEADER > TAB ////////////
     .state('header.tab', {
-      url: "/tab",
+      url: '/tab',
       abstract: true,
-      templateUrl: "tab.html"
+      templateUrl: 'templates/tab.html',
+      controller: 'tab'
     })
       .state('header.tab.main', {
         url: '/main',
-        // abstract: true,
-        templateUrl: "main.html"
+        params: {'cardList': 'main'},
+        views: {
+          main: {
+            templateUrl: 'templates/main.html'
+          },
+          'cardList@header.tab.main': {
+            templateUrl: 'templates/cardList.html'
+          }
+        }
       })
+      .state('header.tab.addCards', {
+        url: '/addCards',
+        params: {'cardList': 'addCards'},
+        views: {
+          addCards: {
+            templateUrl: 'templates/addCards.html'
+          },
+          'cardList@header.tab.addCards': {
+            templateUrl: 'templates/cardList.html'
+          }
+        }
+      })
+      .state('header.tab.barcodes', {
+        url: '/barcodes',
+        views: {
+          barcodes: {
+            templateUrl: 'templates/barcodes.html'
+          }
+        }
+      })
+    /////////////// HEADER > ADDBARCODES /////////////////
+    .state('header.addBarcodes', {
+      url: '/addBarcodes',
+      params: {header: 'addBarcodes'},
+      templateUrl: 'templates/addBarcodes.html'
+    })
+    /////////////// HEADER > FIRSTCARDS /////////////////
+    .state('header.firstCards', {
+      url: '/firstCards',
+      params: {cards: 'firstCards'},
+      views: {
+        '': {
+          templateUrl: 'templates/firstCards.html'
+        },
+        'cards@header.firstCards': {
+          templateUrl: 'templates/cards.html'
+        }
+      }
+    })
+
   //       .state('header.tab.main.cardList', {
   //         url: '/cardList',
   //         templateUrl: 'cardList.html'
@@ -89,6 +166,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   //   url: '/walk',
   //   templateUrl: 'walk.html'
   // })
-  $urlRouterProvider.otherwise('/header');
+  $urlRouterProvider.otherwise('/header/tab/main');
 
 });
