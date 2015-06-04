@@ -51,3 +51,25 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+.view-slide-in.ng-enter {
+  transition: all 1s ease;
+  -webkit-transition:all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+   
+  opacity:0.5;
+  opacity:0;
+}
+
+.view-slide-in.ng-enter {
+  opacity: 0;
+}
+.view-slide-in.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.view-slide-in.ng-leave.ng-leave-active{
+  opacity:1;
+}
+.view-slide-in.ng-leave{
+  opacity:0;
+}

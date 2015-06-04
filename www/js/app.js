@@ -60,8 +60,12 @@ angular.module('cardKing', ['ionic'])
     .state('header.tab', {
       url: '/tab',
       abstract: true,
-      templateUrl: 'templates/tab.html',
-      controller: 'tab'
+      views: {
+        header: {
+          templateUrl: 'templates/tab.html',
+          controller: 'tab'
+        }
+      }
     })
       .state('header.tab.main', {
         url: '/main',
@@ -69,9 +73,6 @@ angular.module('cardKing', ['ionic'])
         views: {
           main: {
             templateUrl: 'templates/main.html'
-          },
-          'cardList@header.tab.main': {
-            templateUrl: 'templates/cardList.html'
           }
         }
       })
@@ -99,14 +100,18 @@ angular.module('cardKing', ['ionic'])
     .state('header.addBarcodes', {
       url: '/addBarcodes',
       params: {header: 'addBarcodes'},
-      templateUrl: 'templates/addBarcodes.html'
+      views: {
+        header: {
+          templateUrl: 'templates/addBarcodes.html'
+        }
+      }
     })
     /////////////// HEADER > FIRSTCARDS /////////////////
     .state('header.firstCards', {
       url: '/firstCards',
       params: {cards: 'firstCards'},
       views: {
-        '': {
+        header: {
           templateUrl: 'templates/firstCards.html'
         },
         'cards@header.firstCards': {
