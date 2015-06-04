@@ -14,36 +14,48 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+///////////////////////Testing stuff
 .test {
   margin-top: 5px;
   height: 66px;
   background: pink;
 }
+.blue {
+  background: blue;
+}
+.yellow {
+  background: yellow;
+}
+.pink {
+  background: pink;
+}
+.absolute {
+  position: absolute;
+}
+.test2 {
+  bottom: 40px; left: 30px;
+  background: black;
+}
+.test3 {
+  bottom: 10px; right: 30px;
+  background: black;
+}
 
+// max height 100%
 ion-content {
   .scroll {
     height: 100%
   }
 }
-
-.main-options {
-  height: 55px;
-  background: black;
-}
-.sample-show-hide {
-  padding:10px;
-  border:1px solid black;
-  background:white;
+.trapezoid {
+  border-bottom: 30px solid black;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  margin-left: 10px;
+  height: 0;
+  width: 70px;
 }
 
-.sample-show-hide {
-  -webkit-transition:all linear 0.5s;
-  transition:all linear 0.5s;
-}
-
-.sample-show-hide.ng-hide {
-  opacity:0;
-}
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;

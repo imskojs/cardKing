@@ -1,0 +1,22 @@
+<ion-view view-title="Title">
+  <ion-header-bar align-title="left" class="bar-dark bar-subheader">
+    <div class="buttons">
+      <button class="button" 
+        ng-click="goTo('main.home')"
+        nav-direction="back"
+      >Left Button</button>
+    </div>
+  </ion-header-bar>
+  <ion-content delegate-handle="myCards" class="has-footer">
+  <div></div>
+  <ion-list>
+    <ion-item ng-repeat="myCard in myCards">
+      <h2>{{myCard.id}}</h2>
+    </ion-item>
+  </ion-list>
+
+  <i class="absolute test3"
+    ng-click="myCardsModal.show()"
+  >TESTTESTTEST</i>
+  </ion-content>
+</ion-view>

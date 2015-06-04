@@ -1,0 +1,14 @@
+<ion-header-bar class="bar-positive view-slide-in" ng-show="currentParam.header === 'home'">
+  <div class="buttons">
+    <button class="button button-clear icon ion-navicon-round" ng-click="toggleLeft()"></button>
+    <button class="button button-clear icon ion-card" ng-click="goTo('main.myCards')" nav-direction="forward"></button>
+    <input type="text">
+    <button class="button button-clear icon ion-ios-barcode-outline"
+     ng-click="goTo('main.myCards')"></button>
+    <button class="button button-clear icon ion-ios-heart" ng-click="goTo('main.myCards')"></button>
+  </div>
+</ion-header-bar>
+
+<ion-header-bar class="bar-positive view-slide-in" ng-show="currentParam.header === 'myCards'"  align-title="centers">
+<h2 class="title"> 내 카드 보기</h2>
+</ion-header-bar>

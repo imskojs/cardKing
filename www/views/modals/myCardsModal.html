@@ -1,0 +1,24 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">My Modal title</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <ul>
+      <li ng-repeat="tab in tabs"
+        ng-click="setTab(tab)"
+      >
+        {{ ::tab.title }}
+      </li>
+    </ul>
+    <div class="currentTab">
+      <ng-include src="currentTab"></ng-include>
+    </div>
+  </ion-content>
+
+  <ion-footer-bar align-title="center" ng-click="myCardsModal.hide()">
+    <h2 class="title">
+      추가등록 완료
+    </h2>
+  </ion-footer-bar>
+</ion-modal-view>

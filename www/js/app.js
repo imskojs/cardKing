@@ -26,8 +26,9 @@ angular.module('cardKing', ['ionic'])
     }
   });
   $rootScope.goTo = $.goTo;
+  $rootScope.currentParam = {};
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams){
-    $rootScope.currentParam = toParams
+    $rootScope.currentParam.header = toParams.header
     console.log($rootScope.currentParam);
   })
 })
@@ -51,126 +52,37 @@ angular.module('cardKing', ['ionic'])
   $ionicConfigProvider.navBar.positionSecondaryButtons('right');
 
   $stateProvider
-  .state('header', {
-    url: '/header',
-    abstract: true,
-    templateUrl: 'templates/header.html'
+  .state('walkThrough', {
+    url: '/walkThrough',
+    templateUrl: 'views/walk.html',
+    controller: 'walkThrough'
   })
-    ////////// HEADER > TAB ////////////
-    .state('header.tab', {
-      url: '/tab',
-      abstract: true,
+  .state('main', {
+    url: '/main',
+    templateUrl: 'views/main.html',
+    controller: 'main'
+  })
+    .state('main.home', {
+      url: '/home',
+      params: {header: 'home'},
       views: {
-        header: {
-          templateUrl: 'templates/tab.html',
-          controller: 'tab'
+        'main': {
+          templateUrl: 'views/home.html',
+          controller: 'main.home'
         }
       }
     })
-      .state('header.tab.main', {
-        url: '/main',
-        params: {'cardList': 'main'},
-        views: {
-          main: {
-            templateUrl: 'templates/main.html'
-          }
-        }
-      })
-      .state('header.tab.addCards', {
-        url: '/addCards',
-        params: {'cardList': 'addCards'},
-        views: {
-          addCards: {
-            templateUrl: 'templates/addCards.html'
-          },
-          'cardList@header.tab.addCards': {
-            templateUrl: 'templates/cardList.html'
-          }
-        }
-      })
-      .state('header.tab.barcodes', {
-        url: '/barcodes',
-        views: {
-          barcodes: {
-            templateUrl: 'templates/barcodes.html'
-          }
-        }
-      })
-    /////////////// HEADER > ADDBARCODES /////////////////
-    .state('header.addBarcodes', {
-      url: '/addBarcodes',
-      params: {header: 'addBarcodes'},
+    .state('main.myCards', {
+      url: '/myCards',
+      params: {header: 'myCards'},
       views: {
-        header: {
-          templateUrl: 'templates/addBarcodes.html'
-        }
-      }
-    })
-    /////////////// HEADER > FIRSTCARDS /////////////////
-    .state('header.firstCards', {
-      url: '/firstCards',
-      params: {cards: 'firstCards'},
-      views: {
-        header: {
-          templateUrl: 'templates/firstCards.html'
-        },
-        'cards@header.firstCards': {
-          templateUrl: 'templates/cards.html'
+        'main': {
+          templateUrl: 'views/myCards.html',
+          controller: 'main.myCards'
         }
       }
     })
 
-  //       .state('header.tab.main.cardList', {
-  //         url: '/cardList',
-  //         templateUrl: 'cardList.html'
-  //       })
-  //     .state('header.tab.addCards', {
-  //       url: '/myCards',
-  //       abstract: true,
-  //       templateUrl: 'myCards.html'
-  //     })
-  //       .state('header.tab.addCards.cardList', {
-  //         url: '/cardList',
-  //         templateUrl: 'cardList.html'
-  //       })
-  //     .state('header.tab.barcode', {
-  //       url: '/barcode',
-  //       templateUrl: 'barcode.html'
-  //     })
-  //   .state('header.register', {
-  //     url: '/register',
-  //     templateUrl: 'register.html'
-  //   })
-  //   .state('header.headerFoot', {
-  //     url: '/headerFoot',
-  //     abstract: true,
-  //     tempalteUrl: 'headerFoot.html'
-  //   })
-  //     .state('header.headerFoot.cards', {
-  //       url: '/cards',
-  //       templateUrl: 'cards.html'
-  //     })
-  // .state('foot', {
-  //   url: '/foot',
-  //   abstract: true,
-  //   templateUrl: 'foot.html'
-  // })
-  //   .state('foot.cards', {
-  //     url: '/cards',
-  //     templateUrl: 'cards.html'
-  //   })
-  // .state('external', {
-  //   url: '/external',
-  //   templateUrl: 'external.html'
-  // })
-  // .state('login', {
-  //   url: '/login',
-  //   templateUrl: 'login.html'
-  // })
-  // .state('walk', {
-  //   url: '/walk',
-  //   templateUrl: 'walk.html'
-  // })
-  $urlRouterProvider.otherwise('/header/tab/main');
+  $urlRouterProvider.otherwise('/walkThrough');
 
 });
